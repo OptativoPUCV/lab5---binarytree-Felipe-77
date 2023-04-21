@@ -45,3 +45,18 @@ ae81ebe
 ae81ebe
  tests:  0|0
 51ee9ba
+vie 21 abr 2023 09:00:52 -04: 
+ treemap.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+ tests:  11|6
+total_score: 15/70
+965d43c
+ tests:  13|5
+total_score: 25/70
+965d43c
+ tests:  15|4
+total_score: 25/70
+965d43c
+ tests:  17|4
+total_score: 35/70
+965d43c

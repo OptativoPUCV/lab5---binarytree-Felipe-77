@@ -57,38 +57,84 @@ TreeMap * createTreeMap(int (*lower_than) (void* key1, void* key2)) {
 void insertTreeMap(TreeMap * tree, void* key, void * value) {
 
     TreeNode * current = tree->root;
+    TreeNode * new = createTreeNode(key, value);
+    tree->current = new;
+
+    if (tree->root == NULL){
+        tree->root = new;
+    }
 
     while (current != NULL){
         if (is_equal(tree, key, current->pair->key) == 1){
             return;
         }
         if (tree->lower_than(key, current->pair->key) == 1){
+            if (current->left == NULL){
+                current->left = new;
+                new->parent = current;
+                return;
+            }
             GO_LEFT;
         }
         else {
+            if (current->right == NULL){
+                current->right = new;
+                new->parent = current;
+                return;
+            }
             GO_RIGHT;
         }
     }
-
-    TreeNode * new = createTreeNode(key, value);
-    if (tree->root == NULL){
-        tree->root = new;
-    }
-    else {
-        new->parent = current->parent;
-    }
-
-    tree->current = new;
 }
 
 TreeNode * minimum(TreeNode * x){
-
-    return NULL;
+    TreeNode * current = x;
+    while (current->left != NULL){
+        GO_LEFT;
+    }
+    return current;
 }
 
 
 void removeNode(TreeMap * tree, TreeNode* node) {
+    if (node->left == NULL && node->right == NULL){
+        if (tree->lower_than(node->pair->key, node->parent->pair->key) == 1){
+            node->parent->left = NULL;
+            return;
+        }
+        else {
+            node->parent->right = NULL;
+            return;
+        }
+    }
+    else if (node->left == NULL || node->right == NULL){
+        if (node->left == NULL){
+            if (tree->lower_than(node->pair->key, node->parent->pair->key) == 1){
+                node->parent->left = node->right;
+                node->right->parent = node->parent;
+                return;
+            }
+            else {
+                node->parent->right = node->right;
+                node->right->parent = node->parent;
+                return;
+            }
+        }
 
+        if (tree->lower_than(node->pair->key, node->parent->pair->key) == 1){
+            node->parent->left = node->left;
+            node->left->parent = node->parent;
+            return;
+        }
+        else {
+            node->parent->right = node->left;
+            node->left->parent = node->parent;
+            return;
+        }
+    }
+    else {
+        return;
+    }
 }
 
 void eraseTreeMap(TreeMap * tree, void* key){
