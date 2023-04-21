@@ -192,11 +192,14 @@ Pair * firstTreeMap(TreeMap * tree) {
 
 Pair * nextTreeMap(TreeMap * tree) {
     if (tree->current->right == NULL){
-        if (tree->lower_than(tree->current->pair->key, tree->current->pair->key) == 1){
+        if (tree->lower_than(tree->current->pair->key, tree->current->parent->pair->key) == 1){
             tree->current = tree->current->parent;
             return tree->current->pair;
         }
-        return NULL;
+        if (tree->current->parent->parent)
+    }
+    else if (tree->lower_than(tree->current->pair->key, tree->current->pair->key) == 1){
+        return tree->current->pair;
     }
 
     tree->current = tree->current->right;
