@@ -83,7 +83,7 @@ void insertTreeMap(TreeMap * tree, void* key, void * value) {
                 return;
             }
             GO_RIGHT;
-        }
+        } 
     }
 }
 
@@ -133,6 +133,14 @@ void removeNode(TreeMap * tree, TreeNode* node) {
         }
     }
     else {
+        TreeNode * current = node;
+        GO_RIGHT;
+
+        current = minimum(current);
+        node->pair->key = current->pair->key;
+        node->pair->value = current->pair->value; 
+        removeNode(tree, current);
+
         return;
     }
 }
@@ -177,9 +185,20 @@ Pair * upperBound(TreeMap * tree, void* key) {
 }
 
 Pair * firstTreeMap(TreeMap * tree) {
-    return NULL;
+    TreeNode * firstNode = minimum(tree->root);
+    tree->current = firstNode;
+    return firstNode->pair;
 }
 
 Pair * nextTreeMap(TreeMap * tree) {
-    return NULL;
+    if (tree->current->right == NULL){
+        if (tree->lower_than(tree->current->pair->key, tree->current->pair->key) == 1){
+            tree->current = tree->current->parent;
+            return tree->current->pair;
+        }
+        return NULL;
+    }
+
+    tree->current = tree->current->right;
+    return tree->current->pair;
 }
