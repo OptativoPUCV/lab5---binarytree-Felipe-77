@@ -86,14 +86,17 @@ Pair * searchTreeMap(TreeMap * tree, void* key) {
     Pair * result = NULL;
 
     while (current != NULL){
-        if (is_equal(tree, key, current->pair->key) == 1)
+        if (is_equal(tree, key, current->pair->key) == 1){
             result = current->pair;
+            break;
+        }
         if (tree->lower_than(key, current->pair->key))
             GO_LEFT;
         GO_RIGHT;
 
     }
     tree->current = current;
+    printf("%d", result->value);
     return result;
 }
 
