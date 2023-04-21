@@ -3,6 +3,9 @@
 #include <string.h>
 #include "treemap.h"
 
+#define GO_LEFT current = current->left;
+#define GO_RIGHT current = current->right;
+
 typedef struct TreeNode TreeNode;
 
 
@@ -46,7 +49,7 @@ TreeMap * createTreeMap(int (*lower_than) (void* key1, void* key2)) {
     new->current = NULL;
     new->root = NULL;
     new->lower_than = lower_than;
-    
+
     return new;
 }
 
@@ -78,7 +81,20 @@ void eraseTreeMap(TreeMap * tree, void* key){
 
 
 Pair * searchTreeMap(TreeMap * tree, void* key) {
-    return NULL;
+    
+    TreeNode * current = tree->root;
+    Pair * result = NULL;
+
+    while (current != NULL){
+        if (is_equal(tree, key, current->pair->key) == 1)
+            result = current->pair;
+        if (tree->lower_than(key, current->pair->key))
+            GO_LEFT;
+        GO_RIGHT;
+
+    }
+    
+    return result;
 }
 
 
