@@ -38,3 +38,8 @@ treemap.c:99:9: error: ‘value’ undeclared (first use in this function)
 treemap.c:99:9: note: each undeclared identifier is reported only once for each function it appears in
 Compilation failed
 9cef852
+ tests:  11|6
+total_score: 15/70
+ae81ebe
+ tests:  0|0
+ae81ebe
