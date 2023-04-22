@@ -3,3 +3,9 @@
  tests:  24|2
 total_score: 55/70
 6cf342e
+sáb 22 abr 2023 14:42:11 -04: 
+ treemap.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+ tests:  25|1
+total_score: 60/70
+d188747
