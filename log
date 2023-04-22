@@ -9,3 +9,27 @@ sáb 22 abr 2023 14:42:11 -04:
  tests:  25|1
 total_score: 60/70
 d188747
+ tests:  22|2
+total_score: 50/70
+907e407
+ tests:  25|1
+total_score: 60/70
+907e407
+sáb 22 abr 2023 14:54:17 -04: 
+ treemap.c | 20 ++++++++++++++++++++
+ 1 file changed, 20 insertions(+)
+ tests:  25|1
+total_score: 60/70
+907e407
+ tests:  26|1
+total_score: 60/70
+907e407
+ tests:  26|1
+total_score: 60/70
+907e407
+sáb 22 abr 2023 15:03:02 -04: 
+ treemap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+ tests:  26|1
+total_score: 60/70
+907e407
